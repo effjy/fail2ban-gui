@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="35%" cy="25%" r="90%">
+      <stop offset="0%" stop-color="#2a2f45"/>
+      <stop offset="55%" stop-color="#1a1b26"/>
+      <stop offset="100%" stop-color="#16161e"/>
+    </radialGradient>
+    <linearGradient id="shield" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7aa2f7"/>
+      <stop offset="100%" stop-color="#3b4a82"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="8" y="8" width="240" height="240" rx="52" fill="url(#bg)" stroke="#7aa2f7" stroke-opacity="0.25" stroke-width="2"/>
+
+  <!-- shield body -->
+  <path d="M128 40 L196 64 V128 C196 172 166 200 128 216 C90 200 60 172 60 128 V64 Z"
+        fill="url(#shield)" stroke="#9ab4ff" stroke-opacity="0.6" stroke-width="2"/>
+
+  <!-- darker inner panel -->
+  <path d="M128 58 L178 76 V126 C178 160 156 182 128 196 C100 182 78 160 78 126 V76 Z"
+        fill="#161a2e" fill-opacity="0.80"/>
+
+  <!-- padlock body -->
+  <rect x="104" y="118" width="48" height="42" rx="7" fill="#d6e0ff"/>
+  <!-- padlock shackle -->
+  <path d="M112 118 V104 a16 16 0 0 1 32 0 V118"
+        fill="none" stroke="#aebfff" stroke-width="8" stroke-linecap="round"/>
+  <!-- keyhole -->
+  <circle cx="128" cy="134" r="6" fill="#1a1b26"/>
+  <rect x="125" y="134" width="6" height="14" rx="3" fill="#1a1b26"/>
+
+  <!-- "ban" ring: severed-intruder accent in red -->
+  <circle cx="190" cy="74" r="22" fill="#1a1b26" stroke="#f7768e" stroke-width="6"/>
+  <line x1="176" y1="60" x2="204" y2="88" stroke="#f7768e" stroke-width="6" stroke-linecap="round"/>
+</svg>
