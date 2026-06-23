@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Fail2ban GUI
+GenericName=Intrusion Prevention
+Comment=Manage fail2ban jails, bans and the server from a window
+Exec=fail2ban-gui
+Icon=fail2ban-gui
+Terminal=false
+Type=Application
+Categories=System;Security;Network;GTK;
+StartupNotify=true
+StartupWMClass=fail2ban-gui
+Keywords=fail2ban;firewall;ban;jail;intrusion;security;ssh;brute force;
