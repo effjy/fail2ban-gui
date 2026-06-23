@@ -504,6 +504,10 @@ static void on_jail_selected(GtkListBox *, GtkListBoxRow *row, gpointer data) {
 static void rebuild_jail_list(App *app) {
     // Remember selection so it survives the rebuild.
     std::string keep = app->selected_jail;
+    // Silence row-selected while we clear and re-select: otherwise every refresh
+    // would reload the jail's config from the server and clobber any unsaved
+    // edits in the bantime/findtime/maxretry fields (and fire extra calls).
+    g_signal_handlers_block_by_func(app->jails_box, (gpointer)on_jail_selected, app);
     clear_listbox(app->jails_box);
 
     GtkListBoxRow *to_select = nullptr;
@@ -531,6 +535,7 @@ static void rebuild_jail_list(App *app) {
         gtk_list_box_select_row(GTK_LIST_BOX(app->jails_box), to_select);
     else
         app->selected_jail.clear();
+    g_signal_handlers_unblock_by_func(app->jails_box, (gpointer)on_jail_selected, app);
 }
 
 static void rebuild_allbanned(App *app) {
@@ -570,12 +575,25 @@ static void rebuild_allbanned(App *app) {
 }
 
 static void rebuild_jail_dropdown(App *app) {
+    // Remember the current pick by name so the periodic rebuild doesn't silently
+    // reset the "Ban in jail" target back to the first jail.
+    std::string sel;
+    GObject *item = (GObject *)gtk_drop_down_get_selected_item(GTK_DROP_DOWN(app->gban_jail));
+    if (item) sel = gtk_string_object_get_string(GTK_STRING_OBJECT(item));
+
     // Replace the dropdown's string model with the current jail names.
     guint old = g_list_model_get_n_items(G_LIST_MODEL(app->gban_model));
     for (guint i = 0; i < old; ++i)
         gtk_string_list_remove(app->gban_model, 0);
     for (const auto &j : app->jails)
         gtk_string_list_append(app->gban_model, j.c_str());
+
+    if (!sel.empty())
+        for (guint i = 0; i < app->jails.size(); ++i)
+            if (app->jails[i] == sel) {
+                gtk_drop_down_set_selected(GTK_DROP_DOWN(app->gban_jail), i);
+                break;
+            }
 }
 
 static void refresh_all(App *app) {
