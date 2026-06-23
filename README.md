@@ -1,4 +1,6 @@
-# Fail2ban GUI
+<div align="center">
+  
+<a href="https://github.com/effjy/fail2ban-gui/"><img src="titles/fail2ban-gui-title.svg" height="52" alt="Fail2ban GUI"></a>
 
 ![Version](https://img.shields.io/badge/version-1.0.2-7aa2f7?style=flat-square)
 ![License](https://img.shields.io/badge/license-MIT-9ece6a?style=flat-square)
@@ -7,6 +9,8 @@
 ![Platform](https://img.shields.io/badge/platform-Linux-565f89?style=flat-square&logo=linux&logoColor=white)
 ![Depends](https://img.shields.io/badge/needs-fail2ban-f7768e?style=flat-square)
 ![Maintained](https://img.shields.io/badge/maintained-yes-9ece6a?style=flat-square)
+
+</div>
 
 A GTK4 desktop front-end for [fail2ban](https://github.com/fail2ban/fail2ban).
 fail2ban is great, but its command line is easy to get lost in — this window
