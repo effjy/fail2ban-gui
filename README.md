@@ -24,9 +24,6 @@ C++17 / GTK4 · Tokyo Night theme · minimizes to the system tray.
 
 ![Fail2ban GUI screenshot](screenshot.png)
 
-> Take a screenshot of the running program and save it as `screenshot.png` in
-> the project root to have it appear here.
-
 ---
 
 ## Features
